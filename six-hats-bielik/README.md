@@ -51,11 +51,11 @@ curl -s http://127.0.0.1:8000/health | jq
 
 3. Wyślij żądanie Six Hats i sprawdź wynik:
 
-- `blue_score` powinien być w zakresie 1–10
-- `summary` to podsumowanie (PL)
-- gdy `include_trace=true`, w `trace[]` zobaczysz tekst każdego „kapelusza”
+- `score` powinien być w zakresie 1–10
+- `summary` to podsumowanie (PL) z kroku Blue Hat
+- gdy `include_trace=true`, zobaczysz przebieg w `rounds[]` (per kapelusz i per aktor)
 
-```bash
+````bash
 curl -s http://127.0.0.1:8000/v1/six-hats \
   -H 'content-type: application/json' \
   -d '{
@@ -65,8 +65,59 @@ curl -s http://127.0.0.1:8000/v1/six-hats \
       "additional_context": "Cel pilotażu: 3 miasta, horyzont 12 miesięcy, KPI: liczba wdrożeń, oszczędności budżetowe, retencja użytkowników.",
       "language": "pl"
     },
+    "mode": "actors",
     "include_trace": true
   }' | jq
+
+### Aktorzy vs Kapelusze (ważne)
+
+Domyślnie (`mode: "actors"`) system rozdziela:
+
+- **Aktorów** – stałe persony (np. radca prawny, inżynier ML, mieszkaniec)
+- **Kapelusze** – tryby myślenia / ograniczenia na daną iterację (white/red/black/yellow/green)
+
+Czyli w każdej iteracji przechodzisz po kapeluszach, a **każdy aktor** wypowiada się w ramach aktualnego kapelusza.
+
+Na końcu jest osobny krok **Blue Hat**, który robi syntezę i wystawia `score` + `summary`.
+W trybie `actors` ten krok jest wykonywany przez **jedną personę** ("boss" / facylitator), a nie przez wszystkich aktorów.
+
+Możesz ją nadpisać polem `blue_actor`:
+
+```json
+{
+  "mode": "actors",
+  "blue_actor": {"name": "Dyrektor", "persona": "Jesteś dyrektorem. Podejmujesz decyzję i ustalasz priorytety."}
+}
+```
+
+Możesz też podać własnych aktorów:
+
+```bash
+curl -s http://127.0.0.1:8000/v1/six-hats \
+  -H 'content-type: application/json' \
+  -d '{
+    "project": {
+      "project_title": "…",
+      "project_description": "…",
+      "language": "pl"
+    },
+    "mode": "actors",
+    "actors": [
+      {"name": "CFO", "persona": "Jesteś CFO. Patrzysz na koszty, ryzyko i ROI."},
+      {"name": "CTO", "persona": "Jesteś CTO. Patrzysz na wykonalność, utrzymanie i bezpieczeństwo."}
+    ],
+    "include_trace": true
+  }' | jq
+````
+
+### Tryb legacy
+
+Jeśli chcesz zachować wcześniejsze zachowanie (jedna persona na kapelusz), ustaw:
+
+```json
+{ "mode": "legacy" }
+```
+
 ```
 
 4. Logi „co każdy agent powiedział”
@@ -78,3 +129,4 @@ Serwer loguje wyjście każdego kapelusza w stdout (widzisz je w terminalu z `uv
 - `MODEL_NAME` (domyślnie: `speakleash/Bielik-1.5B-v3.0-Instruct`)
 - `DEVICE` (np. `cuda`, `mps`, `cpu`; domyślnie auto)
 - `MAX_NEW_TOKENS`, `MAX_TOTAL_NEW_TOKENS`, `TEMPERATURE`, `TOP_P`
+```
