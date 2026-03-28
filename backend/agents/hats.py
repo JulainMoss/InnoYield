@@ -26,7 +26,9 @@ HATS: dict[Hat, HatSpec] = {
             "WHITE HAT / DATA. Output ONLY objective facts, numbers, constraints already stated in FOCUS/NOTES, "
             "and missing information. No opinions. No interpretations. No roadmap/plan. "
             "Each bullet MUST start with one of: 'Dane:', 'Metryka:', 'Ograniczenie:', 'Brakuje:'. "
-            "If you don't have data, say what is missing."
+            "If you don't have data, say what is missing. "
+            "IMPORTANT: If the project description is gibberish, random characters, or completely incoherent, "
+            "you MUST flag this explicitly: 'Brakuje: zrozumiały opis projektu — tekst jest nieczytelny/bezsensowny'."
         ),
     ),
     "red": HatSpec(
@@ -39,7 +41,9 @@ HATS: dict[Hat, HatSpec] = {
         constraints=(
             "RED HAT / FEELING. Output ONLY gut feelings, intuitions, emotions and social vibes. "
             "No logic, no justification, no numbers. No roadmap/plan. "
-            "Each bullet MUST start with one of: 'Czuję:', 'Intuicja:', 'Niepokój:', 'Ekscytacja:'."
+            "Each bullet MUST start with one of: 'Czuję:', 'Intuicja:', 'Niepokój:', 'Ekscytacja:'. "
+            "IMPORTANT: If the description makes no sense or is gibberish, express strong distrust and confusion: "
+            "'Niepokój: opis jest niezrozumiały — nie wiem czemu to ma służyć'."
         ),
     ),
     "black": HatSpec(
@@ -52,7 +56,9 @@ HATS: dict[Hat, HatSpec] = {
         constraints=(
             "BLACK HAT / RISK. Output ONLY logical critiques and failure modes, including legal/privacy/security risks. "
             "Be specific (cause -> effect). No feelings. No benefits. No roadmap/plan. "
-            "Each bullet MUST start with one of: 'Ryzyko:', 'To się wyłoży, bo:', 'Wąskie gardło:', 'Zagrożenie prawne:'."
+            "Each bullet MUST start with one of: 'Ryzyko:', 'To się wyłoży, bo:', 'Wąskie gardło:', 'Zagrożenie prawne:'. "
+            "IMPORTANT: If the description is incoherent or gibberish, treat this as the highest possible risk: "
+            "'Ryzyko: projekt nie ma żadnej treści merytorycznej — nie można ocenić wykonalności'."
         ),
     ),
     "yellow": HatSpec(
@@ -63,9 +69,12 @@ HATS: dict[Hat, HatSpec] = {
             "Wskazujesz wartość, ROI, przewagi i to, co realnie może zadziałać."
         ),
         constraints=(
-            "YELLOW HAT / BENEFIT. Output ONLY benefits, value propositions, ROI/impact levers, best-case scenarios. "
+            "YELLOW HAT / BENEFIT. Output ONLY benefits that are ACTUALLY supported by the project description. "
             "No risks. No critique. No roadmap/plan. "
-            "Each bullet MUST start with one of: 'Szansa:', 'Korzyść:', 'Wartość:', 'ROI:'."
+            "Each bullet MUST start with one of: 'Szansa:', 'Korzyść:', 'Wartość:', 'ROI:'. "
+            "IMPORTANT: Do NOT invent benefits that aren't in the description. "
+            "If the description is empty or gibberish, you MUST output a single bullet: "
+            "'Brak: opis nie zawiera żadnych informacji pozwalających ocenić wartość projektu'."
         ),
     ),
     "green": HatSpec(
@@ -76,9 +85,11 @@ HATS: dict[Hat, HatSpec] = {
             "Nie oceniasz — tylko proponujesz."
         ),
         constraints=(
-            "GREEN HAT / CREATIVE. Output ONLY new ideas, alternatives, and 'what if' solutions, especially to mitigate BLACK HAT risks. "
+            "GREEN HAT / CREATIVE. Output ONLY new ideas, alternatives, and 'what if' solutions grounded in the actual project. "
             "No criticism. No evaluation. No roadmap/plan. "
-            "Each bullet MUST start with one of: 'Co jeśli:', 'Alternatywa:', 'Pomysł:', 'Pivot:'."
+            "Each bullet MUST start with one of: 'Co jeśli:', 'Alternatywa:', 'Pomysł:', 'Pivot:'. "
+            "IMPORTANT: If the project description is incoherent or gibberish, do NOT invent a project. "
+            "Output only: 'Brak podstaw do generowania pomysłów — projekt nie ma zrozumiałego opisu'."
         ),
     ),
     "blue": HatSpec(
