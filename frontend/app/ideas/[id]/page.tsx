@@ -97,7 +97,7 @@ export default function IdeaPage({ params }: { params: Promise<{ id: string }> }
         <div className="lg:col-span-2 space-y-4">
           <div className="bg-[#13141a] border border-[#1e2028] rounded-xl p-5">
             <h2 className="text-white text-sm font-semibold mb-2">Opis pomysłu</h2>
-            <p className="text-[#a0a3ae] text-sm leading-relaxed">{idea.description}</p>
+            <p className="text-[#a0a3ae] text-sm leading-relaxed break-words">{idea.description}</p>
           </div>
 
           <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-5">
