@@ -234,6 +234,7 @@ export default function SubmitPage() {
                       <span className="text-xs sm:text-sm font-bold break-words">{cfg.label}</span>
                     )}
                   </div>
+                  {cfg.desc && <p className="text-xs text-[#8b8d97] mt-1">{cfg.desc}</p>}
                   
                   {isLast && (
                     <div className="mt-3 text-center transition-all duration-300">
