@@ -52,7 +52,7 @@ curl -s http://127.0.0.1:8000/health | jq
 3. Wyślij żądanie Six Hats i sprawdź wynik:
 
 - `score` powinien być w zakresie 1–10
-- `summary` to podsumowanie (PL) z kroku Blue Hat
+- `summary` to podsumowanie (PL) z kroku Blue Hat (czysty tekst, bez JSON/markdown/list)
 - gdy `include_trace=true`, zobaczysz przebieg w `rounds[]` (per kapelusz i per aktor)
 
 ````bash
@@ -77,6 +77,10 @@ Domyślnie (`mode: "actors"`) system rozdziela:
 - **Kapelusze** – tryby myślenia / ograniczenia na daną iterację (white/red/black/yellow/green)
 
 Czyli w każdej iteracji przechodzisz po kapeluszach, a **każdy aktor** wypowiada się w ramach aktualnego kapelusza.
+
+Jeśli nie podasz `actors`, serwis **wygeneruje automatycznie 3 aktorów** przy pomocy LLM na podstawie opisu projektu.
+Wygenerowani aktorzy to **role / stanowiska** (np. "Dyrektor produktu", "Radca prawny (RODO)") — nie imiona i nazwiska.
+Możesz to nadpisać, przekazując własne `actors` w request.
 
 Na końcu jest osobny krok **Blue Hat**, który robi syntezę i wystawia `score` + `summary`.
 W trybie `actors` ten krok jest wykonywany przez **jedną personę** ("boss" / facylitator), a nie przez wszystkich aktorów.
