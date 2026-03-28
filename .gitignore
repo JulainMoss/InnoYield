@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# local sqlite DB (dev)
+innoyield.db
+
+# Python bytecode (repo-wide safety net)
+__pycache__/
+*.py[cod]
