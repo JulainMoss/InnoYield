@@ -14,7 +14,6 @@ export interface Idea {
   id: string;
   title: string;
   description: string;
-  milestone: string;
   creator_username: string;
   creator_id: string;
   status: IdeaStatus;
@@ -32,7 +31,6 @@ export interface Bet {
   id: string;
   idea_id: string;
   idea_title: string;
-  idea_milestone: string;
   position: BetPosition;
   amount: number;
   multiplier?: number;

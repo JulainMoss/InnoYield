@@ -38,10 +38,10 @@ export function formatDate(dateStr: string): string {
 }
 
 export const HAT_CONFIG = {
-  WHITE: { label: "Biały", emoji: "🎩", color: "bg-zinc-100 text-zinc-900", desc: "Fakty i dane" },
-  RED: { label: "Czerwony", emoji: "🎩", color: "bg-red-500/20 text-red-400", desc: "Emocje i intuicja" },
-  BLACK: { label: "Czarny", emoji: "🎩", color: "bg-zinc-700 text-zinc-200", desc: "Ryzyka i słabości" },
-  YELLOW: { label: "Żółty", emoji: "🎩", color: "bg-yellow-500/20 text-yellow-400", desc: "Korzyści i optymizm" },
-  GREEN: { label: "Zielony", emoji: "🎩", color: "bg-green-500/20 text-green-400", desc: "Kreatywność i innowacja" },
-  BLUE: { label: "Niebieski", emoji: "🎩", color: "bg-blue-500/20 text-blue-400", desc: "Proces i wykonalność" },
+  WHITE: { label: "Biały", emoji: "🎩", color: "text-zinc-300", desc: "Fakty i dane" },
+  RED: { label: "Czerwony", emoji: "🎩", color: "text-red-400", desc: "Emocje i intuicja" },
+  BLACK: { label: "Czarny", emoji: "🎩", color: "text-zinc-400", desc: "Ryzyka i słabości" },
+  YELLOW: { label: "Żółty", emoji: "🎩", color: "text-yellow-400", desc: "Korzyści i optymizm" },
+  GREEN: { label: "Zielony", emoji: "🎩", color: "text-green-400", desc: "Kreatywność i innowacja" },
+  BLUE: { label: "Niebieski", emoji: "🎩", color: "text-blue-400", desc: "Proces i wykonalność" },
 };

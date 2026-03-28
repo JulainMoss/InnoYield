@@ -17,7 +17,6 @@ def _idea_to_out_simple(idea: Idea) -> IdeaOut:
         id=idea.id,
         title=idea.title,
         description=idea.description,
-        milestone=idea.milestone,
         category=idea.category,
         status=idea.status,
         validation_score=idea.validation_score,

@@ -24,7 +24,10 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
-    throw new Error(body.detail ?? `HTTP ${res.status}`);
+    const detail = Array.isArray(body.detail)
+      ? body.detail.map((e: { msg?: string }) => e.msg ?? JSON.stringify(e)).join(", ")
+      : body.detail;
+    throw new Error(detail ?? `HTTP ${res.status}`);
   }
 
   return res.json() as Promise<T>;
@@ -70,7 +73,6 @@ export async function getIdea(id: string): Promise<Idea> {
 export async function submitIdea(data: {
   title: string;
   description: string;
-  milestone: string;
   category: string;
 }): Promise<{ idea_id: string; status: string }> {
   return request("/api/ideas", { method: "POST", body: JSON.stringify(data) });

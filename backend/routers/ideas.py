@@ -18,7 +18,6 @@ def _idea_to_out(idea: Idea) -> IdeaOut:
         id=idea.id,
         title=idea.title,
         description=idea.description,
-        milestone=idea.milestone,
         category=idea.category,
         status=idea.status,
         validation_score=idea.validation_score,
@@ -88,7 +87,6 @@ async def submit_idea(
         creator_id=current_user.id,
         title=body.title,
         description=body.description,
-        milestone=body.milestone,
         category=body.category,
         status=IdeaStatus.PENDING,
     )

@@ -45,12 +45,11 @@ async def _run_validation(idea_id: str) -> None:
             return
         idea_title = idea.title
         idea_description = idea.description
-        idea_milestone = idea.milestone
 
     request = SixHatsRequest(
         project=ProjectInput(
             project_title=idea_title,
-            project_description=f"{idea_description}\n\nMilestone: {idea_milestone}",
+            project_description=idea_description,
             language="pl",
         ),
         mode="actors",

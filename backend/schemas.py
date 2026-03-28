@@ -64,7 +64,6 @@ class HatScoreOut(BaseModel):
 class IdeaCreate(BaseModel):
     title: str
     description: str
-    milestone: str
     category: str = "Inne"
 
     @field_validator("title")
@@ -88,7 +87,6 @@ class IdeaOut(BaseModel):
     id: str
     title: str
     description: str
-    milestone: str
     category: str
     status: IdeaStatus
     validation_score: int
@@ -129,7 +127,6 @@ class BetOut(BaseModel):
     id: str
     idea_id: str
     idea_title: str
-    idea_milestone: str
     position: BetPosition
     amount: int
     multiplier: Optional[float]

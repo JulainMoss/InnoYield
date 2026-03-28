@@ -13,9 +13,9 @@ const CATEGORIES = ["HealthTech", "E-commerce", "B2B SaaS", "FoodTech", "EdTech"
 export default function SubmitPage() {
   const { user } = useApp();
   const router = useRouter();
-  
-  const [step, setStep] = useState(0); 
-  const [form, setForm] = useState({ title: "", description: "", milestone: "", category: "Inne" });
+
+  const [step, setStep] = useState(0);
+  const [form, setForm] = useState({ title: "", description: "", category: "Inne" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [ideaId, setIdeaId] = useState<string | null>(null);
@@ -51,8 +51,7 @@ export default function SubmitPage() {
     if (form.title.length > 200) e.title = "Max 200 znaków";
     if (!form.description.trim()) e.description = "Opis jest wymagany";
     if (form.description.trim().length < 50) e.description = "Minimum 50 znaków";
-    if (!form.milestone.trim()) e.milestone = "Milestone jest wymagany";
-    return e;
+return e;
   }
 
   async function handleSubmit() {
@@ -100,15 +99,15 @@ export default function SubmitPage() {
             const revealed = revealedScores.find((r) => r.hat_color === hatColor);
             const cfg = HAT_CONFIG[hatColor];
             const isActive = step === 1 && !revealed && i === revealedScores.length;
-            const isLast = i === HAT_ORDER.length - 1; 
-            
+            const isLast = i === HAT_ORDER.length - 1;
+
             return (
               <div key={hatColor} className={cn("flex flex-col", isLast ? "flex-[1.3]" : "flex-1")}>
-                <div 
+                <div
                   className={cn(
                     "rounded-xl border flex items-center justify-center transition-all duration-500 text-center w-full",
                     isLast ? "p-3 min-h-[90px] sm:min-h-[110px]" : "p-2 sm:p-3 min-h-[70px] sm:min-h-[86px] mt-2",
-                    revealed ? "bg-[#13141a] border-[#2d2f3a]" : isActive ? "bg-[#13141a] border-indigo-500/30 animate-pulse" : "bg-[#0e0f14] border-[#1e2028] opacity-60"
+                    revealed ? "border-transparent" : isActive ? "border-indigo-500/30 animate-pulse" : "border-transparent opacity-60"
                   )}
                 >
                   {revealed ? (
@@ -119,7 +118,7 @@ export default function SubmitPage() {
                     <span className={cn("text-xs sm:text-sm font-bold break-words", cfg.color)}>{cfg.label}</span>
                   )}
                 </div>
-                
+
                 {isLast && (
                   <div className="mt-3 text-center transition-all duration-300">
                     <div className="text-white text-xl sm:text-2xl font-black flex items-baseline justify-center gap-0.5">
@@ -138,17 +137,17 @@ export default function SubmitPage() {
         <h3 className={cn("text-2xl font-bold mb-2", step === 2 ? (passed ? "text-emerald-400" : "text-red-400") : "text-white")}>
           {step === 2 ? (passed ? "Pomysł zatwierdzony!" : "Pomysł odrzucony") : "Oczekiwanie na wynik"}
         </h3>
-        
+
         <p className="text-[#8b8d97] text-sm mb-8">
-          {step === 2 
-            ? "Twój pomysł pojawi się na publicznym listingu." 
+          {step === 2
+            ? "Twój pomysł pojawi się na publicznym listingu."
             : "Wypełnij formularz i rozpocznij walidację."}
         </p>
       </div>
 
       {/* STEP 1: Form (Widoczne zawsze, blokowane po przejściu dalej) */}
       <div className={cn("space-y-5 transition-all duration-300", step > 0 && "opacity-50 pointer-events-none")}>
-        
+
         {!user && step === 0 && (
           <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl px-4 py-3 text-yellow-400 text-sm">
             <Link href="/login" className="underline">Zaloguj się</Link> aby zgłosić pomysł
@@ -204,10 +203,10 @@ export default function SubmitPage() {
           >
             {submitting ? "Wysyłanie..." : "Zwaliduj pomysł →"}
           </button>
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className={cn(
-              "flex-1 py-3 rounded-xl bg-[#1e2028] hover:bg-[#2a2c36] text-[#8b8d97] hover:text-white font-medium text-sm transition-colors flex items-center justify-center text-center", 
+              "flex-1 py-3 rounded-xl bg-[#1e2028] hover:bg-[#2a2c36] text-[#8b8d97] hover:text-white font-medium text-sm transition-colors flex items-center justify-center text-center",
               step < 2 && "pointer-events-none"
             )}
           >

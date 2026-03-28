@@ -126,7 +126,6 @@ export default function PortfolioPage() {
                           <Link href={`/ideas/${idea.id}`} className="text-white text-sm font-medium hover:text-indigo-300 transition-colors line-clamp-1">
                             {idea.title}
                           </Link>
-                          <p className="text-[#8b8d97] text-xs mt-0.5">{idea.milestone}</p>
                         </div>
                         <StatusBadge status={idea.status} score={idea.validation_score} />
                       </div>
@@ -180,7 +179,6 @@ function BetCard({ bet, resolved }: { bet: Bet; resolved?: boolean }) {
           <Link href={`/ideas/${bet.idea_id}`} className="text-white text-sm font-medium hover:text-indigo-300 transition-colors line-clamp-1">
             {bet.idea_title}
           </Link>
-          <p className="text-[#8b8d97] text-xs mt-0.5 line-clamp-1">{bet.idea_milestone}</p>
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <span className={cn("text-xs font-semibold px-2.5 py-1 rounded-lg", isYes ? "bg-emerald-500/15 text-emerald-400" : "bg-red-500/15 text-red-400")}>

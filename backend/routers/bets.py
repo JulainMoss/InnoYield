@@ -23,7 +23,6 @@ def _bet_to_out(bet: Bet) -> BetOut:
         id=bet.id,
         idea_id=bet.idea_id,
         idea_title=bet.idea.title,
-        idea_milestone=bet.idea.milestone,
         position=bet.position,
         amount=bet.amount,
         multiplier=bet.multiplier,

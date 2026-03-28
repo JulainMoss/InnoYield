@@ -62,7 +62,6 @@ class Idea(Base):
     creator_id: Mapped[str] = mapped_column(ForeignKey("users.id"), nullable=False)
     title: Mapped[str] = mapped_column(String(200), nullable=False)
     description: Mapped[str] = mapped_column(Text, nullable=False)
-    milestone: Mapped[str] = mapped_column(String(300), nullable=False)
     category: Mapped[str] = mapped_column(String(50), default="Inne")
     status: Mapped[IdeaStatus] = mapped_column(SAEnum(IdeaStatus), default=IdeaStatus.PENDING)
     validation_score: Mapped[int] = mapped_column(Integer, default=0)

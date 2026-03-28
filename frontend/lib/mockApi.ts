@@ -13,7 +13,6 @@ export const MOCK_IDEAS: Idea[] = [
     title: "Kaziu uruchomi aplikację do śledzenia nawyków żywieniowych w ciągu 30 dni",
     description:
       "Platforma mobilna wspierająca użytkowników w monitorowaniu codziennych posiłków z rekomendacjami AI oraz integracją z urządzeniami noszonymi.",
-    milestone: "Opublikuje działający MVP w App Store",
     creator_username: "Kaziu",
     creator_id: "user-1",
     status: "VALIDATED",
@@ -37,7 +36,6 @@ export const MOCK_IDEAS: Idea[] = [
     title: "Magda zbuduje marketplace dla lokalnych rzemieślników w Polsce w 30 dni",
     description:
       "Platforma e-commerce łącząca lokalnych rzemieślników z kupującymi, z funkcją personalizacji zamówień i dostawa następnego dnia.",
-    milestone: "Zarejestruje 50 sprzedawców i przeprowadzi pierwsze 10 transakcji",
     creator_username: "Magda",
     creator_id: "user-2",
     status: "VALIDATED",
@@ -61,7 +59,6 @@ export const MOCK_IDEAS: Idea[] = [
     title: "Piotrek stworzy narzędzie do automatyzacji raportów dla MŚP w 30 dni",
     description:
       "SaaS łączący dane z Excela, systemów ERP i bankowości online, generujący automatyczne raporty zarządcze bez potrzeby znajomości SQL.",
-    milestone: "Wdroży u 3 płacących klientów i zbierze pierwsze przychody",
     creator_username: "Piotrek",
     creator_id: "user-3",
     status: "VALIDATED",
@@ -85,7 +82,6 @@ export const MOCK_IDEAS: Idea[] = [
     title: "Ania uruchomi subskrypcję wegańskich meal kitów w Warszawie",
     description:
       "Cotygodniowe zestawy z lokalnymi, sezonowymi składnikami i przepisami na wegańskie dania. Partnerstwa z lokalnymi farmami.",
-    milestone: "Pozyska 100 subskrybentów i zrealizuje pierwsze dostawy",
     creator_username: "Ania",
     creator_id: "user-4",
     status: "VALIDATED",
@@ -109,7 +105,6 @@ export const MOCK_IDEAS: Idea[] = [
     title: "Tomek stworzy platformę do nauki programowania przez gry dla dzieci",
     description:
       "Gamifikowana nauka kodowania dla dzieci 8-14 lat. Misje, nagrody, współzawodnictwo klasowe. Zgodna z podstawą programową.",
-    milestone: "Przeprowadzi pilotaż w 5 szkołach z 200 uczniami",
     creator_username: "Tomek",
     creator_id: "user-5",
     status: "VALIDATED",
@@ -135,7 +130,6 @@ export const MOCK_BETS: Bet[] = [
     id: "bet-1",
     idea_id: "idea-1",
     idea_title: "Kaziu uruchomi aplikację do śledzenia nawyków żywieniowych",
-    idea_milestone: "Opublikuje działający MVP w App Store",
     position: "YES",
     amount: 5,
     created_at: "2026-03-20T12:00:00Z",
@@ -146,7 +140,6 @@ export const MOCK_BETS: Bet[] = [
     id: "bet-2",
     idea_id: "idea-3",
     idea_title: "Piotrek stworzy narzędzie do automatyzacji raportów dla MŚP",
-    idea_milestone: "Wdroży u 3 płacących klientów",
     position: "YES",
     amount: 8,
     multiplier: 1.62,
@@ -268,7 +261,6 @@ export const mockApi = {
       id: `bet-${Date.now()}`,
       idea_id: ideaId,
       idea_title: idea.title,
-      idea_milestone: idea.milestone,
       position,
       amount,
       created_at: new Date().toISOString(),
