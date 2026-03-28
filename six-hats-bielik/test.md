@@ -1,4 +1,4 @@
-# InnoYield: predykcyjna giełda innowacji miejskich
+# InnoByd: predykcyjna giełda innowacji miejskich
 
 ## Run metadata
 
@@ -12,9 +12,9 @@
 
 > Note: the `summary` field in `test.json` ends mid-table (it’s truncated / not closed), so the table below is only the header.
 
-### **InnoYield: predykcyjna giełda innowacji miejskich**
+### **InnoByd: predykcyjna giełda innowacji miejskich**
 
-1. **Projekt:** _InnoYield_
+1. **Projekt:** _InnoByd_
 2. **Opis:** _Platforma łącząca prediction market z systemem nagradzania wkładu_
 3. **Kluczowe osoby:** Mieszkańcy, urzędnicy
 4. **Data rozpoczęcia:** 15.05.2023
@@ -36,7 +36,7 @@
 
 ### Urzędnik ds. innowacji
 
-- Nazwa projektu: InnoYield
+- Nazwa projektu: InnoByd
 - Opis: Platforma łącząca prediction market z systemem nagradzania wkładu
 - Kluczowe osoby: Mieszkańcy, urzędnicy
 - Data rozpoczęcia: 15.05.2023
@@ -95,7 +95,7 @@
 
 ### Inżynier ML
 
-- _Czuję:_ Niepewność co do skuteczności strategii marketingowej InnoYield
+- _Czuję:_ Niepewność co do skuteczności strategii marketingowej InnoByd
 - _Intuicja:_ Wysoka, ale niepewna ocena potencjalnych oszczędności budżetowych
 - _Ekscytacja:_ Zaintrygowanie możliwością połączenia prediction market z systemem nagradzania wkładu
 - _Niepokój:_ Obawa przed ryzykiem związanym z niepewnością danych historycznych dotyczących podobnych projektów
@@ -182,19 +182,19 @@
 
 - Szansa: Możliwość połączenia prediction market z systemem nagradzania wkładu może zwiększyć zaangażowanie mieszkańców i urzędników w proces innowacji.
 - Korzyść: Dzięki zaangażowaniu społeczności lokalnej, projekt może osiągnąć wyższe oszczędności budżetowe dzięki synergii między społecznością a decydentami.
-- Wartość: Strategia marketingowa InnoYield może przyciągnąć uwagę mediów i inwestorów, co zwiększy szanse na wdrożenie i rozwój platformy.
+- Wartość: Strategia marketingowa InnoByd może przyciągnąć uwagę mediów i inwestorów, co zwiększy szanse na wdrożenie i rozwój platformy.
 - ROI:
 
 ### Product Manager
 
-- Szansa: Projekt InnoYield ma potencjał, aby znacząco zwiększyć innowacyjność i efektywność finansową miast poprzez połączenie prediction market z systemem nagradzania wkładu.
-- Korzyść: Platforma InnoYield może przyczynić się do zwiększenia liczby wdrożonych projektów dzięki zaangażowaniu mieszkańców i urzędników.
-- Wartość: Wdrożenie InnoYield może przynieść znaczne oszczędności budżetowe dzięki lepszemu zarządzaniu ryzykiem i optymalizacji procesów.
+- Szansa: Projekt InnoByd ma potencjał, aby znacząco zwiększyć innowacyjność i efektywność finansową miast poprzez połączenie prediction market z systemem nagradzania wkładu.
+- Korzyść: Platforma InnoByd może przyczynić się do zwiększenia liczby wdrożonych projektów dzięki zaangażowaniu mieszkańców i urzędników.
+- Wartość: Wdrożenie InnoByd może przynieść znaczne oszczędności budżetowe dzięki lepszemu zarządzaniu ryzykiem i optymalizacji procesów.
 
 ### Mieszkaniec
 
 - Szansa: Zwiększenie zaangażowania mieszkańców i urzędników w proces innowacyjny, co może prowadzić do większej liczby wdrożeń i oszczędności budżetowych.
-- Korzyść: Platforma InnoYield może znacząco poprawić retencję użytkowników dzięki atrakcyjnym nagrodom i możliwościom rozwoju pomysłów.
+- Korzyść: Platforma InnoByd może znacząco poprawić retencję użytkowników dzięki atrakcyjnym nagrodom i możliwościom rozwoju pomysłów.
 - Wartość: Dzięki połączeniu prediction market i systemu nagradzania wkładu, projekt ma szansę stworzyć unikalne rozwiązanie na rynku innowacyjnych platform miejskich.
 
 ## Green hat

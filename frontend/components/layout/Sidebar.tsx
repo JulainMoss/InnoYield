@@ -98,7 +98,7 @@ export default function Sidebar() {
             IY
           </div>
           <span className="text-white font-semibold text-base tracking-tight">
-            InnoYield
+            InnoByd
           </span>
         </div>
       </div>

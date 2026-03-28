@@ -60,7 +60,7 @@ curl -s http://127.0.0.1:8000/v1/six-hats \
   -H 'content-type: application/json' \
   -d '{
     "project": {
-      "project_title": "InnoYield: predykcyjna giełda innowacji miejskich",
+      "project_title": "InnoByd: predykcyjna giełda innowacji miejskich",
       "project_description": "Platforma łączy prediction market z systemem nagradzania wkładu. Mieszkańcy i urzędnicy obstawiają prawdopodobieństwo sukcesu projektów, a autorzy rozwijają pomysły przez kolejne etapy PoC.",
       "additional_context": "Cel pilotażu: 3 miasta, horyzont 12 miesięcy, KPI: liczba wdrożeń, oszczędności budżetowe, retencja użytkowników.",
       "language": "pl"

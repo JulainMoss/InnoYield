@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "InnoYield — Rynek Pomysłów",
+  title: "InnoByd — Rynek Pomysłów",
   description: "Waliduj i obstawiaj innowacyjne pomysły",
 };
 
