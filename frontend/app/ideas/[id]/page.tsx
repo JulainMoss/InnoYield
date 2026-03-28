@@ -112,13 +112,13 @@ export default function IdeaPage({ params }: { params: Promise<{ id: string }> }
             <div className="bg-[#13141a] border border-[#1e2028] rounded-xl p-5">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-white text-sm font-semibold">Walidacja AI — 6 Kapeluszy de Bono</h2>
-                <span className="text-[#8b8d97] text-xs bg-[#1e2028] px-2.5 py-1 rounded-lg">{idea.validation_score}/60</span>
+                <span className="text-[#8b8d97] text-xs bg-[#1e2028] px-2.5 py-1 rounded-lg">{idea.hat_scores[idea.hat_scores.length - 1].score}/60</span>
               </div>
               <div className="mb-4">
                 <div className="flex justify-between text-xs mb-1">
                   <span className="text-[#8b8d97]">Wynik walidacji</span>
-                  <span className={cn("font-semibold", idea.validation_score >= 36 ? "text-emerald-400" : "text-red-400")}>
-                    {idea.validation_score >= 36 ? "✓ Zatwierdzone" : "✗ Odrzucone"} ({idea.validation_score}/60)
+                  <span className={cn("font-semibold", idea.status === "VALIDATED" ? "text-emerald-400" : "text-red-400")}>
+                    {idea.status === "VALIDATED" ? "✓ Zatwierdzone" : "✗ Odrzucone"} ({idea.hat_scores[idea.hat_scores.length - 1].score}/10)
                   </span>
                 </div>
                 <div className="h-2 bg-[#1e2028] rounded-full overflow-hidden">

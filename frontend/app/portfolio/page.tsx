@@ -127,7 +127,7 @@ export default function PortfolioPage() {
                             {idea.title}
                           </Link>
                         </div>
-                        <StatusBadge status={idea.status} score={idea.validation_score} />
+                        <StatusBadge status={idea.status} score={idea.hat_scores[idea.hat_scores.length - 1].score} />
                       </div>
                       {idea.hat_scores.length > 0 && (
                         <div className="flex flex-wrap gap-1.5">
@@ -201,8 +201,8 @@ function BetCard({ bet, resolved }: { bet: Bet; resolved?: boolean }) {
 }
 
 function StatusBadge({ status, score }: { status: string; score: number }) {
-  if (status === "VALIDATED") return <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400 shrink-0">✓ {score}/60</span>;
-  if (status === "REJECTED") return <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-red-500/15 text-red-400 shrink-0">✗ {score}/60</span>;
+  if (status === "VALIDATED") return <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400 shrink-0">✓ {score}/10</span>;
+  if (status === "REJECTED") return <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-red-500/15 text-red-400 shrink-0">✗ {score}/10</span>;
   return <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-yellow-500/15 text-yellow-400 shrink-0">⏳ Walidacja</span>;
 }
 

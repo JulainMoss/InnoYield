@@ -10,12 +10,107 @@ import { useApp } from "@/context/AppContext";
 
 const CATEGORIES = ["HealthTech", "E-commerce", "B2B SaaS", "FoodTech", "EdTech", "Inne"];
 
+// Zdefiniowane dane z uwagami agentów (żeby nie zaśmiecać samego HTMLa)
+const AGENT_NOTES = [
+  {
+    role: "Biały · Dyrektor produktu",
+    badge: "bg-[#f1f3f5] text-gray-900",
+    items: [
+      { label: "Dane", text: "Cel pilotażu: 3 miasta, horyzont 12 miesięcy, KPI: liczba wdrożeń, oszczędności budżetowe, retencja użytkowników." },
+      { label: "Metryka", text: "KPI: liczba wdrożeń, oszczędności budżetowe, retencja użytkowników." },
+      { label: "Ograniczenie", text: "Brak danych o skuteczności algorytmów predykcji." },
+      { label: "Brakuje", text: "Dokładnych danych o liczbie wdrożeń w pilotażu." }
+    ]
+  },
+  {
+    role: "Biały · Kierownik operacji",
+    badge: "bg-[#f1f3f5] text-gray-900",
+    items: [
+      { label: "Dane", text: "Liczba uczestników pilotażu: 600 osób, złożonych projektów: 200, wdrożonych projektów: 100." },
+      { label: "Metryka", text: "Średni czas trwania projektu od PoC do wdrożenia: 90 dni." },
+      { label: "Ograniczenie", text: "Brak danych o oszczędnościach budżetowych na etapie wdrażania." },
+      { label: "Brakuje", text: "Szczegółów dotyczących retencji użytkowników w różnych miastach." }
+    ]
+  },
+  {
+    role: "Biały · Radca prawny (RODO)",
+    badge: "bg-[#f1f3f5] text-gray-900",
+    items: [
+      { label: "Dane", text: "InnoYield to platforma łącząca prediction market z systemem nagradzania wkładu. Platforma umożliwia mieszkańcom i urzędnikom obstawianie prawdopodobieństwa sukcesu." },
+      { label: "Metryka", text: "Cel pilotażu: 3 miasta, horyzont 12 miesięcy. KPI: liczba wdrożeń, oszczędności budżetowe, retencja użytkowników." }
+    ]
+  },
+  {
+    role: "Czerwony · Dyrektor produktu",
+    badge: "bg-red-500 text-white",
+    items: [
+      { label: "Czuję", text: "Mocno wierzę w sukces tego projektu." },
+      { label: "Intuicja", text: "To szansa na innowacyjne rozwiązanie problemów miejskich." },
+      { label: "Niepokój", text: "Niepewność co do skuteczności algorytmów predykcji." },
+      { label: "Ekscytacja", text: "Możliwość tworzenia przełomowych rozwiązań dla społeczności lokalnych." }
+    ]
+  },
+  {
+    role: "Czerwony · Kierownik operacji",
+    badge: "bg-red-500 text-white",
+    items: [
+      { label: "Czuję", text: "Niepewność co do skuteczności algorytmów predykcji w realistycznym środowisku miejskim." },
+      { label: "Intuicja", text: "Obawy dotyczące skali i wpływu wprowadzenia platformy na istniejące struktury organizacyjne." },
+      { label: "Niepokój", text: "Refleksja nad wyzwaniami prawnymi związanymi z przetwarzaniem danych osobowych." }
+    ]
+  },
+  {
+    role: "Czerwony · Radca prawny (RODO)",
+    badge: "bg-red-500 text-white",
+    items: [
+      { label: "Czuję", text: "Brak pewności co do długoterminowych oszczędności i weryfikacji wyników predykcji." },
+      { label: "Niepokój", text: "Obawy o zgodność z RODO i bezpieczeństwo danych." },
+      { label: "Ekscytacja", text: "Potencjał innowacyjnych rozwiązań dla miast i identyfikacji priorytetów." }
+    ]
+  },
+  {
+    role: "Czarny · Dyrektor produktu",
+    badge: "bg-[#1e2028] text-white border border-gray-600",
+    items: [
+      { label: "Ryzyko", text: "Brak danych o skuteczności algorytmów predykcji w realistycznym środowisku miejskim." },
+      { label: "Ryzyko", text: "Niepewność co do skali i wpływu wprowadzenia platformy na istniejące struktury." },
+      { label: "Ryzyko", text: "Brak danych o oszczędnościach budżetowych na etapie wdrażania." }
+    ]
+  },
+  {
+    role: "Czarny · Kierownik operacji",
+    badge: "bg-[#1e2028] text-white border border-gray-600",
+    items: [
+      { label: "Ryzyko", text: "Brak dokładnych danych o liczbie wdrożeń w pilotażu." },
+      { label: "Ryzyko", text: "Oczekiwanie na szczegółowe dane dotyczące retencji użytkowników w różnych miastach." }
+    ]
+  },
+  {
+    role: "Czarny · Radca prawny (RODO)",
+    badge: "bg-[#1e2028] text-white border border-gray-600",
+    items: [
+      { label: "Ryzyko", text: "Brak danych o skuteczności algorytmów predykcji. To się wyłoży, bo brak odpowiednich testów w zróżnicowanych warunkach miejskich." },
+      { label: "Zagrożenie prawne", text: "Ryzyko naruszenia przepisów RODO i regulacji dotyczących ochrony danych." }
+    ]
+  },
+  {
+    role: "Żółty · Dyrektor produktu",
+    badge: "bg-yellow-400 text-gray-900",
+    items: [
+      { label: "Szansa", text: "Platforma łącząca prediction market z systemem nagradzania wkładu. Rozwój przez kolejne etapy PoC." },
+      { label: "Korzyść", text: "Użytkownicy mają szansę wpływać na decyzje publiczne i wspierać innowacje miejskie." },
+      { label: "Wartość", text: "Predictions Market może dostarczać cennych informacji o projektach." },
+      { label: "ROI", text: "Potencjalne oszczędności budżetowe i wzrost retencji użytkowników mogą przynieść wymierne zyski." }
+    ]
+  }
+];
+
 export default function SubmitPage() {
   const { user } = useApp();
   const router = useRouter();
   
   const [step, setStep] = useState(0); 
-  const [form, setForm] = useState({ title: "", description: "", category: "Inne" });
+  const [form, setForm] = useState({ title: "", description: "", milestone: "", category: "Inne" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [ideaId, setIdeaId] = useState<string | null>(null);
@@ -23,7 +118,6 @@ export default function SubmitPage() {
   const [finalStatus, setFinalStatus] = useState<{ status: string; score: number } | null>(null);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Poll for validation status
   useEffect(() => {
     if (step !== 1 || !ideaId) return;
 
@@ -73,14 +167,16 @@ export default function SubmitPage() {
   }
 
   const HAT_ORDER = ["WHITE", "RED", "BLACK", "YELLOW", "GREEN", "BLUE"] as const;
-  const passed = finalStatus?.status === "VALIDATED";
+  // Wynik liczymy z niebieskiego kapelusza
+  const blueScoreItem = revealedScores.find((r) => r.hat_color === "BLUE");
+  const passed = step === 2 && blueScoreItem && blueScoreItem.score >= 5;
 
   return (
-    // Główny kontener grid - dzieli całą stronę na kolumny
-    <div className="px-8 py-8 max-w-5xl w-full grid grid-cols-1 lg:grid-cols-3 gap-10">
+    // ZMIANA: max-w-7xl oraz podział 5 kolumn (3 na lewo, 2 na prawo) - bardzo szerokie i czytelne
+    <div className="px-8 py-8 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-5 gap-10">
       
-      {/* LEWA KOLUMNA: Nagłówek, Walidacja, Formularz */}
-      <div className="lg:col-span-2 space-y-16">
+      {/* LEWA KOLUMNA */}
+      <div className="lg:col-span-3 space-y-16">
         
         {/* HEADER */}
         <div>
@@ -97,7 +193,7 @@ export default function SubmitPage() {
           </p>
         </div>
 
-        {/* STEP 2: Validation (Widoczne zawsze, aktywne gdy krok >= 1) */}
+        {/* STEP 2: Validation */}
         <div className={cn("transition-all duration-300", step === 0 && " pointer-events-none")}>
           <div className="flex items-start gap-2 sm:gap-3">
             {HAT_ORDER.map((hatColor, i) => {
@@ -106,7 +202,6 @@ export default function SubmitPage() {
               const isActive = step === 1 && !revealed && i === revealedScores.length;
               const isLast = i === HAT_ORDER.length - 1; 
               
-              // Mapowanie kolorów tła i tekstu dla całego kafelka
               const getHatStyle = (color: string) => {
                 switch (color) {
                   case "WHITE": return "bg-[#f1f3f5] text-gray-900 border-[#dee2e6]";
@@ -140,7 +235,6 @@ export default function SubmitPage() {
                     )}
                   </div>
                   
-                  {/* Wynik pod ostatnim kafelkiem (ZMIENIONY NA OCENĘ NIEBIESKIEGO) */}
                   {isLast && (
                     <div className="mt-3 text-center transition-all duration-300">
                       <div className="text-white text-xl sm:text-2xl font-black flex items-baseline justify-center gap-0.5">
@@ -167,7 +261,7 @@ export default function SubmitPage() {
           </p>
         </div>
 
-        {/* STEP 1: Form (Widoczne zawsze, blokowane po przejściu dalej) */}
+        {/* STEP 1: Form */}
         <div className={cn("space-y-5 transition-all duration-300", step > 0 && "opacity-50 pointer-events-none")}>
           
           {!user && step === 0 && (
@@ -239,18 +333,49 @@ export default function SubmitPage() {
 
       </div>
 
-      {/* PRAWA KOLUMNA: Nowe pole */}
-      <div className="lg:col-span-1">
-        <div className="bg-[#181920] border border-[#1e2028] rounded-2xl p-6 h-full">
-          <h3 className="text-white font-semibold mb-3">Dodatkowe informacje</h3>
-          <p className="text-[#8b8d97] text-sm leading-relaxed mb-4">
-            Zanim wyślesz zgłoszenie upewnij się, że:
-          </p>
-          <ul className="text-[#8b8d97] text-sm space-y-2 list-disc list-inside">
-            <li>Opis jasno definiuje problem</li>
-            <li>Określiłeś grupę docelową</li>
-            <li>Wskazałeś proponowane rozwiązanie</li>
-          </ul>
+      {/* PRAWA KOLUMNA: Szersza, renderowana warunkowo */}
+      <div className="lg:col-span-2">
+        <div className="bg-[#181920] border border-[#1e2028] rounded-2xl p-6 h-full flex flex-col">
+          <h3 className="text-white font-semibold mb-3">Uwagi agentów</h3>
+          
+          
+          {step < 2 ? (
+            // KROK 0: Oczekiwanie
+            
+            <div>
+              <p className="text-[#8b8d97] text-sm leading-relaxed mb-6">
+                Po dokonaniu walidacji, agenci AI wystawią swoje uwagi dotyczące pomysłu. Zwróć na nie uwagę przy kolejnych zgłoszeniach, mogą pomóc Ci lepiej zrozumieć, czego szuka społeczność i jak ulepszyć swój pomysł!
+              </p>
+              <p className="text-[#8b8d97] text-sm leading-relaxed mb-4">
+                Zanim wyślesz zgłoszenie upewnij się, że:
+              </p>
+              <ul className="text-[#8b8d97] text-sm space-y-2 list-disc list-inside">
+                <li>Opis jasno definiuje problem</li>
+                <li>Określiłeś grupę docelową</li>
+                <li>Wskazałeś proponowane rozwiązanie</li>
+              </ul>
+            </div>
+          ) : (
+            // KROK 1 i 2: Uwagi od agentów
+            // Dodane overflow-y-auto, aby kontener nie rozciągał strony w nieskończoność
+            <div className="flex-1 overflow-y-auto max-h-[800px] pr-2 space-y-6 scrollbar-thin scrollbar-thumb-[#2d2f3a] scrollbar-track-transparent">
+              {AGENT_NOTES.map((note, idx) => (
+                <div key={idx} className="bg-[#13141a] rounded-xl p-4 border border-[#1e2028]">
+                  <span className={cn("text-xs font-bold px-2 py-1 rounded-md mb-3 inline-block", note.badge)}>
+                    {note.role}
+                  </span>
+                  <ul className="space-y-2 mt-2">
+                    {note.items.map((item, i) => (
+                      <li key={i} className="text-sm text-[#8b8d97] leading-relaxed">
+                        <strong className="text-white font-medium mr-1">{item.label}:</strong> 
+                        {item.text}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
