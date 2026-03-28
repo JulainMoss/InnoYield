@@ -23,6 +23,7 @@ const NAV_LINKS = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
       </svg>
     ),
+    requireAuth: true,
   },
   {
     href: "/marketplace",
@@ -37,7 +38,7 @@ const NAV_LINKS = [
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const { user } = useApp();
+  const { user, logout } = useApp();
 
   return (
     <aside className="fixed left-0 top-0 h-full w-60 bg-[#0e0f14] border-r border-[#1e2028] flex flex-col z-40">
@@ -74,31 +75,56 @@ export default function Sidebar() {
       </nav>
 
       {/* Submit CTA */}
-      <div className="px-3 pb-3">
-        <Link
-          href="/submit"
-          className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-          </svg>
-          Dodaj pomysł
-        </Link>
-      </div>
-
-      {/* User wallet */}
-      <div className="px-3 pb-5 pt-2 border-t border-[#1e2028]">
-        <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#1a1c22]">
-          <div className="w-7 h-7 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xs font-bold uppercase">
-            {user.username[0]}
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-white text-sm font-medium truncate">{user.username}</p>
-            <p className="text-[#8b8d97] text-xs">
-              {user.coin_balance.toLocaleString("pl-PL")} 🪙
-            </p>
-          </div>
+      {user && (
+        <div className="px-3 pb-3">
+          <Link
+            href="/submit"
+            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+            Dodaj pomysł
+          </Link>
         </div>
+      )}
+
+      {/* User wallet / auth */}
+      <div className="px-3 pb-5 pt-2 border-t border-[#1e2028]">
+        {user ? (
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#1a1c22]">
+              <div className="w-7 h-7 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xs font-bold uppercase">
+                {user.username[0]}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-sm font-medium truncate">{user.username}</p>
+                <p className="text-[#8b8d97] text-xs">{user.coin_balance.toLocaleString("pl-PL")} 🪙</p>
+              </div>
+            </div>
+            <button
+              onClick={logout}
+              className="w-full text-xs text-[#8b8d97] hover:text-white py-1.5 transition-colors"
+            >
+              Wyloguj się
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-2">
+            <Link
+              href="/login"
+              className="flex items-center justify-center w-full py-2.5 rounded-lg bg-[#1a1c22] hover:bg-[#22242e] text-[#8b8d97] hover:text-white text-sm font-medium transition-colors"
+            >
+              Zaloguj się
+            </Link>
+            <Link
+              href="/register"
+              className="flex items-center justify-center w-full py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition-colors"
+            >
+              Zarejestruj się
+            </Link>
+          </div>
+        )}
       </div>
     </aside>
   );
