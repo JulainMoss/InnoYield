@@ -101,7 +101,7 @@ async def _run_validation(idea_id: str) -> None:
         idea = result.scalar_one_or_none()
         if idea:
             idea.validation_score = total_score
-            idea.status = IdeaStatus.VALIDATED if total_score >= 36 else IdeaStatus.REJECTED
+            idea.status = IdeaStatus.VALIDATED if total_score >= 5 else IdeaStatus.REJECTED
             if idea.status == IdeaStatus.VALIDATED:
                 idea.market_closes_at = datetime.now(timezone.utc) + timedelta(days=30)
             await db.commit()

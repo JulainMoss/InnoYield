@@ -100,6 +100,14 @@ export default function IdeaPage({ params }: { params: Promise<{ id: string }> }
             <p className="text-[#a0a3ae] text-sm leading-relaxed break-words">{idea.description}</p>
           </div>
 
+          <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-5">
+            <h2 className="text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-2">Milestone do osiągnięcia</h2>
+            <p className="text-white text-sm font-medium">
+              {idea.milestone || "Do ustalenia przez moderatora"}
+            </p>
+            {idea.market_closes_at && <p className="text-[#8b8d97] text-xs mt-1">do {formatDate(idea.market_closes_at)}</p>}
+          </div>
+
           {idea.hat_scores.length > 0 && (
             <div className="bg-[#13141a] border border-[#1e2028] rounded-xl p-5">
               <div className="flex items-center justify-between mb-4">
